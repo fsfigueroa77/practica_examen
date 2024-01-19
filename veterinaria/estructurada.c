@@ -74,6 +74,7 @@ void segundo_menu(int *eleccc, float *costo){
 }
 
 
+asd
 
 
 
