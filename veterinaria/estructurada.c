@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-void primer_menu(int *elecc);
-void valores_adicionales(int *elecc);
 void verificacion(int *eleccc, int *mm, int *nn);
 void repetir_programa(int *elecc);
+void primer_menu(int *elecc);
+void segundo_menu(int *eleccc, float *costo);
 
 int main(){
     int elec = 0;
     while(elec == 0){
-        primer_menu(&elec);
-        valores_adicionales(&elec);
+        primer_menu(&elec);        
         elec = 0;
         repetir_programa(&elec);
         if(elec == 100){
@@ -19,6 +18,15 @@ int main(){
     }
     printf("\nGracias por usar el programa <3");
     return(0);
+}
+
+void verificacion(int *eleccc, int *mm, int *nn){
+    while(*eleccc < *mm || *eleccc > *nn){
+        scanf("%d", eleccc);
+        if(*eleccc < *mm || *eleccc > *nn){
+            printf("Eleccion incorrecta! Elije nuevamente: ");
+        }
+    }
 }
 
 void repetir_programa(int *elecc){
@@ -34,9 +42,57 @@ void repetir_programa(int *elecc){
 
 void primer_menu(int *elecc){
     int m = 1, n = 3;
+    float emer = 40, cont = 25, vacu = 30, adicional = 0;
     printf("\n\t[1] Emergencia:\t\t40 USD\n\t[2] Control:\t\t25 USD\n\t[3] Vacunas:\t\t30 USD\nElija el tipo de consulta: ");
     verificacion(elecc, &m, &n);
+    switch(*elecc){
+        case 1:
+            segundo_menu(elecc, &emer);
+            break;
+        case 2:
+            segundo_menu(elecc, &cont);
+            break;
+        case 3:
+            segundo_menu(elecc, &vacu);
+            break;
+    }
 }
+
+void segundo_menu(int *eleccc, float *costo){
+    int elec2 = 0, m = 1, n = 2;
+    if(*eleccc == 1){
+        printf("\n\t[1] Si.\n\t[2] No.\nHay costos adicionales?: ");
+        verificacion(&elec2, &m, &n);
+        mostrar_resultados()
+    }else if(*eleccc == 2){
+        printf("\n\t[1] Si.\n\t[2] No.\nDesea agregar el corte y banho? (20 USD): ");
+        verificacion(&elec2, &m, &n);
+    }else{
+        printf("\n\t[1] Si.\n\t[2] No.\nDesea obtener el certificado? (5 USD): ");
+        verificacion(&elec2, &m, &n);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void valores_adicionales(int *elecc){
     int elec2 = 0, m = 1, n = 2;
@@ -72,11 +128,8 @@ void valores_adicionales(int *elecc){
     }
 }
 
-void verificacion(int *eleccc, int *mm, int *nn){
-    while(*eleccc < *mm || *eleccc > *nn){
-        scanf("%d", eleccc);
-        if(*eleccc < *mm || *eleccc > *nn){
-            printf("Eleccion incorrecta! Elije nuevamente: ");
-        }
-    }
-}
+
+
+
+
+
