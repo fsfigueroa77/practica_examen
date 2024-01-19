@@ -5,6 +5,9 @@ void verificacion(int *eleccc, int *mm, int *nn);
 void repetir_programa(int *elecc);
 void primer_menu(int *elecc);
 void segundo_menu(int *eleccc, float *costo);
+void mostrar_resultados1(float *cost, float *adi);
+void mostrar_resultados2(float *cost, float *adi);
+void mostrar_resultados3(float *cost, float *adi);
 
 int main(){
     int elec = 0;
@@ -60,77 +63,43 @@ void primer_menu(int *elecc){
 
 void segundo_menu(int *eleccc, float *costo){
     int elec2 = 0, m = 1, n = 2;
+    srand(time(NULL));
+    float emer_adi = rand() % 81 + 20, cont_adi = 20, vacu_adi = 5, sin_adional = 0;
     if(*eleccc == 1){
         printf("\n\t[1] Si.\n\t[2] No.\nHay costos adicionales?: ");
         verificacion(&elec2, &m, &n);
-        mostrar_resultados()
+        if(elec2 == 1){
+            mostrar_resultados1(costo, &emer_adi);
+        }else{
+            mostrar_resultados1(costo, &sin_adional);
+        }
     }else if(*eleccc == 2){
         printf("\n\t[1] Si.\n\t[2] No.\nDesea agregar el corte y banho? (20 USD): ");
         verificacion(&elec2, &m, &n);
+        if(elec2 == 1){
+            mostrar_resultados2(costo, &cont_adi);
+        }else{
+            mostrar_resultados2(costo, &sin_adional);
+        }
     }else{
         printf("\n\t[1] Si.\n\t[2] No.\nDesea obtener el certificado? (5 USD): ");
         verificacion(&elec2, &m, &n);
-    }
-}
-
-
-asd
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void valores_adicionales(int *elecc){
-    int elec2 = 0, m = 1, n = 2;
-    float emer = 40, cont = 25, vacu = 30, adicional = 0;
-    if(*elecc == 1){ //adicional para EMERGENCIA
-        printf("\n\t[1] Si.\n\t[2] No.\nHay costos adicionales?: ");
-        verificacion(&elec2, &m, &n);
         if(elec2 == 1){
-            srand(time(NULL));
-            adicional = rand() % 81 + 20;  //Genero un numero aleatorio entre 20 y 100 para anhadir un valor adicional al azar dentro del menu de emergencia.
-            printf("\nEl Valor a pagar por EMERGENCIA es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", emer, adicional, emer + adicional);
+            mostrar_resultados3(costo, &vacu_adi);
         }else{
-            printf("\nEl Valor a pagar por EMERGENCIA es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", emer, adicional, emer + adicional);
-        }
-    }else if(*elecc == 2){ //adicional para CONTROL
-        printf("\n\t[1] Si.\n\t[2] No.\nDesea agregar el corte y banho? (20 USD): ");
-        verificacion(&elec2, &m, &n);
-        if(elec2 == 1){
-            adicional = 20;
-            printf("\nEl Valor a pagar por CONTROL es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", cont, adicional, cont + adicional);
-        }else{
-            printf("\nEl Valor a pagar por CONTROL es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", cont, adicional, cont + adicional);
-        }
-    }else{ //adicional para VACUNAS
-        printf("\n\t[1] Si.\n\t[2] No.\nDesea obtener el certificado? (5 USD): ");
-        verificacion(&elec2, &m, &n);
-        if(elec2 == 1){
-            adicional = 5;
-            printf("\nEl Valor a pagar por VACUNAS es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", vacu, adicional, vacu + adicional);
-        }else{
-            printf("\nEl Valor a pagar por CONTROL es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", vacu, adicional, vacu + adicional);
+            mostrar_resultados3(costo, &sin_adional);
         }
     }
 }
 
+void mostrar_resultados1(float *cost, float *adi){
+    printf("\nEl Valor a pagar por EMERGENCIA es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", *cost, *adi, *cost + *adi);
+}
 
+void mostrar_resultados2(float *cost, float *adi){
+    printf("\nEl Valor a pagar por CONTROL es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", *cost, *adi, *cost + *adi);
+}
 
-
-
-
+void mostrar_resultados3(float *cost, float *adi){
+    printf("\nEl Valor a pagar por VACUNAS es de %.2f USD. Con costo adicional de %.2f USD. Valor total: %.2f USD", *cost, *adi, *cost + *adi);
+}
