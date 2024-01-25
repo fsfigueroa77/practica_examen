@@ -13,9 +13,9 @@ int main(){
         scanf("%d", &elec);
         if(elec == 1){
             elec = 0;
-        }
-        mostrar_resultados(&super_usd_acum, &eco_usd_acum, &diesel_usd_acum, &super_cant_acum, &eco_cant_acum, &diesel_cant_acum);
+        }        
     }
+    mostrar_resultados(&super_usd_acum, &eco_usd_acum, &diesel_usd_acum, &super_cant_acum, &eco_cant_acum, &diesel_cant_acum);
     return(0);
 }
 

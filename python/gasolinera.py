@@ -16,6 +16,7 @@ def pedir_cantidad(tipo_combustible):
   elif tipo_combustible == 3:
     galones = float(input("Cuantos galones de DIESEL compro: "))
     diesel_gal_acum += galones
+  return galones
 
 def operaciones(tipo_combustible, cant_combustible):
   global super_usd_acum, eco_usd_acum, diesel_usd_acum, super_precio, eco_precio, diesel_precio
@@ -52,8 +53,7 @@ while (repeticion == 1):
   tipo = pedir_tipo()
   cantidad = pedir_cantidad(tipo)
   operaciones(tipo, cantidad)
-  
-  repetir_programa()
+  repetir_programa() 
 
 mostrar_resultados()
-  
+
