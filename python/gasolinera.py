@@ -57,3 +57,18 @@ while (repeticion == 1):
 
 mostrar_resultados()
 
+
+
+numero = int(input("Ingrese un número entero positivo: "))
+
+while numero <= 0:
+    print("El número ingresado no es positivo")   
+    numero = int(input("Ingrese un número entero positivo: "))
+
+impares = []
+
+for i in range(1, numero+1):
+    if i % 2 != 0:
+        impares.append(str(i))
+
+print(", ".join(impares))
